@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'base.apps.BaseConfig',
+    'authy.apps.AuthyConfig',
+    'base',
 ]
 
 MIDDLEWARE = [
@@ -113,6 +114,12 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+
+# LOGIN_REDIRECT_URL = 'tasks'
+# LOGOUT_REDIRECT_URL = 'login'
+LOGIN_URL = 'login'
 
 
 # Static files (CSS, JavaScript, Images)
