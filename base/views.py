@@ -11,6 +11,11 @@ from django.urls import reverse_lazy
 from base.models import Task
 from .models import Task
 
+class GrubView(LoginRequiredMixin, ListView):
+    model = Task
+    template_name = 'base/grub.html'
+    context_object_name = 'task'
+
 class TaskList(LoginRequiredMixin ,ListView):
     model = Task
     context_object_name = 'tasks'

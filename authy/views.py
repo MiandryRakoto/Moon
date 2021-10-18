@@ -2,6 +2,7 @@ from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.views import LoginView
+from django.views.generic.list import ListView
 from django.views.generic.edit import FormView
 from django.urls.base import reverse_lazy
 
@@ -14,7 +15,7 @@ class CustomLoginView(LoginView):
     redirect_authenticated_user = False
     
     def get_success_url(self):
-        return reverse_lazy('tasks') 
+        return reverse_lazy('grub') 
     
 class RegisterPage(FormView):
     template_name = 'authy/register.html'
@@ -27,6 +28,7 @@ class RegisterPage(FormView):
         if user is not None:
             login(self.request, user)
         return super(RegisterPage, self).form_valid(form)
+    
     
     # def get(self, *args, **kwargs):
     #     if self.request.user.is_authenticated:
