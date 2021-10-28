@@ -1,42 +1,61 @@
-from django.shortcuts import render, redirect
-from chat.models import Room, Message
-from django.http import HttpResponse, JsonResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render,redirect,get_object_or_404
 
-# Create your views here.
-def home(request):
-    return render(request, 'home.html')
+from django.contrib import messages
 
-def room(request, room):
-    username = request.GET.get('username')
-    room_details = Room.objects.get(name=room)
-    return render(request, 'room.html', {
-        'username': username,
-        'room': room,
-        'room_details': room_details
-    })
+from django.http import HttpResponse
+from django.db.models import Q
+from django.contrib.auth.decorators import login_required
+import json
+from django.http.response import JsonResponse
+from django.views.generic.list import ListView
+from .models import Message
+from django.contrib.auth.models import User
 
-def checkview(request):
-    room = request.POST['room_name']
-    username = request.POST['username']
 
-    if Room.objects.filter(name=room).exists():
-        return redirect('/'+room+'/?username='+username)
-    else:
-        new_room = Room.objects.create(name=room)
-        new_room.save()
-        return redirect('/'+room+'/?username='+username)
 
-def send(request):
-    message = request.POST['message']
-    username = request.POST['username']
-    room_id = request.POST['room_id']
 
-    new_message = Message.objects.create(value=message, user=username, room=room_id)
-    new_message.save()
-    return HttpResponse('Message sent successfully')
+def users(request):
+    users = User.objects.all()
+    return render(request , 'home.html', {'users':users})
 
-def getMessages(request, room):
-    room_details = Room.objects.get(name=room)
 
-    messages = Message.objects.filter(room=room_details.id)
-    return JsonResponse({"messages":list(messages.values())})
+@login_required
+def discussion(request,pk):
+    other_user = get_object_or_404(User,pk=pk)
+    global messages
+    messages = Message.objects.filter(
+        Q(receiver=request.user,sender=other_user)
+    )
+    messages.update(seen=True)
+    messages = messages  | Message.objects.filter(Q(receiver=other_user,sender=request.user))
+    return render(request, 'discussion.html',{"other_user":other_user, "messages":messages})
+
+
+
+@login_required
+def ajax_load_messages(request,id):
+    other_user = get_object_or_404(User,id=id)
+    messages = Message.objects.filter(seen=False).filter(
+        Q(receiver=request.user,sender=other_user)
+    )   
+    message_list = [{
+        "sender": message.sender.username,
+        "message": message.message,
+        "sent" : message.sender == request.user
+    } for message in messages]
+    messages.update(seen=True)
+
+    if request.method == 'POST':
+        message = json.loads(request.body)
+        m = Message.objects.create(receiver=other_user, sender=request.user,message=message)
+
+        message_list.append({
+            "sender": request.user.username,
+            "message":m.message,
+            "sent":True,
+        })
+        
+    return JsonResponse(message_list, safe=False)
+
+
