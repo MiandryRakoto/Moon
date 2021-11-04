@@ -1,12 +1,24 @@
+{% extends 'authy/authy.html' %}
+{% block content %}
 
+    <h1 class="title">Login</h1>
 
-<h1>Login</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <!-- <i class="fas fa-user"></i>
+        <i class="fas fa-lock"></i> -->
+        {{form.as_p}}
+        <script>
+            let usname = document.getElementById('id_username')
+            usname.setAttribute("placeholder","Username")
 
-<form method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Login">
-</form>
+            let psswrd = document.getElementById('id_password')
+            psswrd.setAttribute("placeholder","Password")
+        </script>
+        <button class="btn" type="submit" value="Login">Login</button>
+    </form>
 
-<p>Don't have an account? <a href="{% url 'register' %}">Sign up</a></p>
+    <p class="para">Don't have an account? <a href="{% url 'register' %}">Sign up</a></p>
+
+{% endblock content %}
 
