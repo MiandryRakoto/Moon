@@ -88,9 +88,9 @@ form .btn{
     border-radius: 55px;
 }
 form .btn:hover{
-    background: linear-gradient(145deg, #03222c, #0c485c);
-    box-shadow: inset 2px 2px 5px #0a0a0a,
-                inset -2px -2px 5px #2e2d2d;
+    background: linear-gradient(145deg, #021920, #0c485c);
+    box-shadow: inset 2px 2px 3px #03242e,
+                inset -2px -2px 3px #093949;
 }
 p{
     color: #485257;

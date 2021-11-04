@@ -5,20 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static '../../../../static/css/authy.css' %}">
-    <script
-      src="{% static '../../../../static/js/authy.js' %}"
-    ></script>
+    <link rel="stylesheet" href="{% static 'css/authy.css' %}">
     <title>Document</title>
 </head>
 <body>
-    <img src="{% static '../../../../static/images/waves.png' %}"  class="wave">
+    <img src="{% static 'images/waves.png' %}"  class="wave">
     <div class="container">
         <div class="img">
-            <img src="{% static '../../../../static/images/bg1.svg' %}" class="bg1">
+            <img src="{% static 'images/bg1.svg' %}" class="bg1">
         </div>
         <div class="login_container">
-            <img src="{% static '../../../../static/images/avatar1.svg' %}" class="avatar" >
+            <img src="{% static 'images/avatar1.svg' %}" class="avatar" >
             {% block content %}
 
             {% endblock content %} 

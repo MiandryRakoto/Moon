@@ -5,12 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static '../../../../static/css/authy2.css'  %}">
+    <link rel="stylesheet" href="{% static 'css/authy2.css' %}">
     <title>Document</title>
 </head>
 <body>
-    {% block content %}
+    <img src="{% static 'images/waves1.png' %}"  class="wave">
+    <div class="container">
+        <div class="login_container">
+            <img src="{% static 'images/avatar1.svg' %}" class="avatar" >
+            {% block content %}
 
-    {% endblock content %}
+            {% endblock content %} 
+        </div>
+        <div class="img">
+            <img src="{% static 'images/bg2.svg' %}" class="bg1">
+        </div>
+
+    </div>    
 </body>
 </html>

@@ -1,13 +1,11 @@
 {% extends 'authy/authy2.html' %}
 {% block content %}
 {% load static %}
-    
     <form method="POST">
         <h1 class="title">Sign up</h1>
         {% csrf_token %}
         {{form.as_p}}
         <script>
-
             let place = document.getElementById('id_username')
             place.setAttribute("placeholder","Enter your username")
 
@@ -17,9 +15,10 @@
             let psswrd2 = document.getElementById('id_password2')
             psswrd2.setAttribute("placeholder","Confirm your password")
         </script>
-        <input type="submit" value="Sign up">
+        <button class="btn" type="submit" value="Signup">Sign up</button>
     </form>
 
     <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
 
 {% endblock content %}
+
