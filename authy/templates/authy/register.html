@@ -1,14 +1,15 @@
-{% extends 'authy/authy.html' %}
+{% extends 'authy/authy2.html' %}
 {% block content %}
-
-    <h1 class="title">Sign up</h1>
-
+{% load static %}
+    
     <form method="POST">
+        <h1 class="title">Sign up</h1>
         {% csrf_token %}
         {{form.as_p}}
         <script>
-            let usname = document.getElementById('id_username')
-            usname.setAttribute("placeholder","Enter your username")
+
+            let place = document.getElementById('id_username')
+            place.setAttribute("placeholder","Enter your username")
 
             let psswrd1 = document.getElementById('id_password1')
             psswrd1.setAttribute("placeholder","Enter your password")
