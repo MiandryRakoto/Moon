@@ -1,3 +1,37 @@
+<!-- {% extends 'base/main.html' %} -->
+<!-- {% block content %} -->
+{% load static%}
 {% csrf_token %}
-<h1><a href="{% url 'tasks' %}">Todo List</a></h1>
-<h1><a href="{% url 'users' %}">Chat</a></h1>
+<!-- <h1><a href="{% url 'tasks' %}">Todo List</a></h1>
+<h1><a href="{% url 'users' %}">Chat</a></h1> -->
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+<link rel="stylesheet" href="{% static 'css/grub.css' %}">
+<div class="corps_body">
+    <div class="corps_container">
+        <div class="corps_card">
+            <div class="corps_box">
+                <div class="corps_content">
+                    <div class="tete">
+                        <h1 class="Football"><a class="titre" href="{% url 'tasks' %}">Todo List</a></h1>
+                    </div>
+                    <a href="{% url 'tasks' %}"><img src="{% static 'images/todolist.svg' %}" class="todo_pics"></a>
+                    <p class="para">La To do list est littéralement une liste de tâches à réaliser qui peuvent être indépendantes les unes des autres et concerner la vie quotidienne. Elles sont aussi appréciées dans la logique de gestion d'un projet, marketing ou informatique par exemple.</p>
+                    <a class="go" href="{% url 'tasks' %}"><i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="corps_card">
+            <div class="corps_box">
+                <div class="corps_content">
+                    <div class="tete">
+                        <h1 class="BasketBall"><a class="titre" href="{% url 'users' %}">Chat</a></h1>
+                    </div>    
+                    <a href="{% url 'users' %}"> <img src="{% static 'images/chat.svg' %}" class="chat_pics"></a>
+                    <p class="para">Le Chat permet l’échange instantané de messages textuels entre plusieurs personnes connectées sur l'Application. Contrairement au courrier électronique, ce moyen de communication permet de conduire un dialogue interactif.</p>
+                    <a class="go" href="{% url 'users' %}"><i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- {% endblock content %} -->

@@ -1,0 +1,120 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+.corps_body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+.corps_body .corps_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 90vw;
+}
+.corps_body .corps_container .corps_card{ 
+    position: relative;
+    width: 30vw;
+    height: 70vh;
+    box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.09),
+                inset -5px -5px 5px rgba(255, 255, 255, 0.9),
+                5px 5px 5px rgba(0, 0, 0, 0.09),
+                -5px -5px 5px rgba(255, 255, 255, 0.9);
+    border-radius: 10px;  
+    margin: 2.5rem;          
+}
+.corps_body .corps_container .corps_card .corps_box{ 
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    transition: 0.5s;
+}
+.corps_body .corps_container .corps_card:hover .corps_box{
+    transform: translateY(-2.5rem);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(45deg,#086168,#064458);
+}
+.corps_body .corps_container .corps_card .corps_box .corps_content{
+    position: relative;
+    top: -10%;
+    padding: 2rem;
+    display: inline;
+    align-items: center;
+}
+.corps_body .corps_container .corps_card .corps_box .corps_content .tete{
+    display: flex;
+    align-items: center;
+}
+.corps_body .corps_container .corps_card .corps_box .corps_content .todo_pics,
+.corps_body .corps_container .corps_card .corps_box .corps_content .chat_pics{
+    display: flex;
+    position: relative;
+    top: 5vh;
+    left: 1vw;
+    justify-content: flex-end;
+    align-items: center;
+    width: 20vw;
+    height: 25vh;
+}
+
+/* .corps_body .corps_container .corps_card .corps_box .corps_content  .Basketball{
+    background:rgb(74, 194, 194);
+    position: relative;
+    top: 0;
+    font-size: 0.8em;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    color: rgb(255, 255, 255);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);
+
+} */
+
+.corps_body .corps_container .corps_card .corps_box .corps_content .titre,
+.corps_body .corps_container .corps_card .corps_box .corps_content .go{
+    color: #064458;
+}
+
+.corps_body .corps_container .corps_card .corps_box .corps_content .titre{
+    position: relative;
+    top: 2vh;
+    left: -1rem;
+}
+
+.corps_body .corps_container .corps_card .corps_box .corps_content .go{
+    position: relative;
+    top: 8vh;
+    left: 90%;
+    padding: .5rem;
+    border-radius: 100%;
+    color: #fff;
+    background-color: #064458;
+}
+
+.corps_body .corps_container .corps_card:hover .corps_box .corps_content  .go{
+    background-color: #fff;
+    color: #064458;
+}
+
+
+.corps_body .corps_container .corps_card:hover .corps_box .corps_content  .titre{
+    
+    color: #fff;
+} 
+.corps_body .corps_container .corps_card .corps_box .corps_content .para{
+    position: relative;
+    top: 8vh;
+    opacity: 0.6;
+}
+.corps_body .corps_container .corps_card:hover .corps_box .corps_content .para{
+    color: #fff;
+}
